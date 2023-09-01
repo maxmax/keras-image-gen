@@ -7,8 +7,6 @@ __pycache__/
 *.so
 
 keras-cv/
-testapp.py
-testapp2.py
 
 # Distribution / packaging
 .Python

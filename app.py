@@ -1,19 +1,15 @@
 import time
 import keras_cv
 from tensorflow import keras
-import matplotlib.pyplot as plt
 
-model = keras_cv.models.StableDiffusion(img_width=512, img_height=512)
+keras.mixed_precision.set_global_policy("float32")
+model = keras_cv.models.StableDiffusion(jit_compile=True)
 
+images = model.text_to_image(
+    "Traditional Japanese woodblock prints, sleeping cat, "
+    "Mount Fuji, сherry blossoms, "
+    "Ukiyo-e, produced between the 17th and the 20th centuries",
+    batch_size=1,
+)
 
-images = model.text_to_image("photograph of an black cat riding a unicorn", batch_size=3)
-
-def plot_images(images):
-    plt.figure(figsize=(20, 20))
-    for i in range(len(images)):
-        ax = plt.subplot(1, len(images), i + 1)
-        plt.imshow(images[i])
-        plt.axis("off")
-
-
-plot_images(images)
+keras.preprocessing.image.array_to_img(images[0]).show()
