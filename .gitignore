@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+keras-cv/
+testapp.py
+testapp2.py
+
 # Distribution / packaging
 .Python
 build/
